@@ -20,7 +20,7 @@
             <div class="flex ">
                 <img src="images/Group.png" class="h-[50px]" alt="">
                 <div class="ml-3">
-                    <h2 class="font-bold">$<span>45000</span></h2>
+                    <h2 class="font-bold">$<span id="available-balance">45000</span></h2>
                     <p class="text-[#08080880]">Bonus Balance</p>
                 </div>
             </div>
@@ -39,12 +39,12 @@
         </div>
 
         <div class="min-h-[200px] grid grid-cols-3 p-3 gap-1">
-            <div class="text-center p-3 rounded-xl border-2 border-gray-300">
+            <div id="add-money-button" class="text-center p-3 rounded-xl border-2 border-gray-300">
                 <img src="images/wallet1.png" class="mx-auto" alt="">
                 <h2>Add Money</h2>
             </div>
 
-            <div class="text-center p-3 rounded-xl border-2 border-gray-300">
+            <div id="cash-out-button" class="text-center p-3 rounded-xl border-2 border-gray-300">
                 <img src="images/send1.png" class="mx-auto" alt="">
                 <h2>Cashout</h2>
             </div>
@@ -72,36 +72,120 @@
     </div>
 
     <div class="all-form-section max-w-lg mx-auto">
-        <h1 class="my-5 font-bold">Add Money</h1>
-        <form action="" class="bg-white rounded-2xl p-8">
-            <div class="mb-3">
-                <h1 class="font-semibold">Select a bank</h1>
-                <select class="select bg-[f4f5f7] mt-3 rounded-3xl w-full">
-                    <option disabled selected>Pick a Banck</option>
-                    <option>Crimson</option>
-                    <option>Amber</option>
-                    <option>Velvet</option>
-                </select>
-            </div>
-            <div>
-                <label class="font-semibold" for="">Bank Account Number</label><br>
-                <input type="text" placeholder="Enter 11 digit account number"
-                    class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
-            </div>
-            <div class="mt-3">
-                <label class="font-semibold" for="">Amount to Add</label><br>
-                <input type="text" placeholder="Add Amount to withdraw"
-                    class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
-            </div>
-            <div class="mt-3">
-                <label class="font-semibold" for="">Pin Number</label><br>
-                <input type="text" placeholder="Enter 3 digit pin number"
-                    class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
-            </div>
-            <button class="btn bg-[#0874F2] text-white mt-5 w-full rounded-3xl">Add Money</button>
-        </form>
+        <!--Add money  -->
+        <div id="add-money-parent" style="display : block;">
+            <h1 class="my-5 font-bold">Add Money</h1>
+            <form action="" class="bg-white rounded-2xl p-8">
+                <div class="mb-3">
+                    <h1 class="font-semibold">Select a bank</h1>
+                    <select id="bank" class="select bg-[f4f5f7] mt-3 rounded-3xl w-full">
+                        <option disabled selected>Pick a Banck</option>
+                        <option>Crimson</option>
+                        <option>Amber</option>
+                        <option>Velvet</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="font-semibold" for="">Bank Account Number</label><br>
+                    <input id="account-number" type="text" placeholder="Enter 11 digit account number"
+                        class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
+                </div>
+                <div class="mt-3">
+                    <label class="font-semibold" for="">Amount to Add</label><br>
+                    <input id="add-amount" type="text" placeholder="Add Amount to withdraw"
+                        class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
+                </div>
+                <div class="mt-3">
+                    <label class="font-semibold" for="">Pin Number</label><br>
+                    <input id="add-pin-number" type="text" placeholder="Enter 3 digit pin number"
+                        class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
+                </div>
+                <button id="add-money-btn" class="btn bg-[#0874F2] text-white mt-5 w-full rounded-3xl">Add
+                    Money</button>
+            </form>
+        </div>
+
+        <!-- Cash Out -->
+        <div id="cash-out-parent" style="display : block;">
+            <form action="" class="bg-white rounded-2xl p-8">
+                <h1 class="my-5 font-bold">Cash Out</h1>
+                <div>
+                    <label class="font-semibold" for="">Agent Number</label><br>
+                    <input id="cash-out-number" type="text" placeholder="Enter 11 digit number"
+                        class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
+                </div>
+                <div class="mt-3">
+                    <label class="font-semibold" for="">Amount</label><br>
+                    <input id="withdraw-amount" type="text" placeholder="Enter amount to withdraw"
+                        class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
+                </div>
+                <div class="mt-3">
+                    <label class="font-semibold" for="">Pin Number</label><br>
+                    <input id="cash-out-pin-number" type="text" placeholder="Enter 3 digit pin number"
+                        class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full">
+                </div>
+                <button id="withdraw-btn" class="btn bg-[#0874F2] text-white mt-5 w-full rounded-3xl">Withdraw
+                    Money</button>
+            </form>
+        </div>
     </div>
 
+    <script>
+        //Add Money
+        document.getElementById("add-money-btn").addEventListener("click", function (e) {
+            e.preventDefault();
+            const bank = document.getElementById("bank").value;
+            const acountnumber = document.getElementById("account-number").value;
+            const amount = parseInt(document.getElementById("add-amount").value);
+            const pin = parseInt(document.getElementById("add-pin-number").value);
+
+            if (acountnumber.length !== 11) {
+                alert("Sothik number de");
+                return;
+            }
+            if (pin !== 143) {
+                alert("Ki re, pin vhule geli!")
+                return;
+            }
+            const availablebalance = parseInt(document.getElementById("available-balance").innerText);
+            const totalbalance = amount + availablebalance;
+            document.getElementById("available-balance").innerText = totalbalance;
+        });
+
+
+        //cash out
+        document.getElementById("withdraw-btn").addEventListener("click",function(e){
+            e.preventDefault();
+            const amount = parseInt(document.getElementById("withdraw-amount").value);
+
+            const acountnumber = document.getElementById("cash-out-number").value;
+            const pin = parseInt(document.getElementById("cash-out-pin-number").value);
+
+            if (acountnumber.length !== 11) {
+                alert("Sothik number de");
+                return;
+            }
+            if (pin !== 143) {
+                alert("Ki re, pin vhule geli!")
+                return;
+            }
+
+            const availablebalance = parseInt(document.getElementById("available-balance").innerText);
+            const totalbalance = availablebalance - amount;
+            document.getElementById("available-balance").innerText = totalbalance;
+        });
+
+        //Toggle Section
+        document.getElementById("add-money-button").addEventListener("click", function () {
+            document.getElementById("cash-out-parent").style.display = "none";
+            document.getElementById("add-money-parent").style.display = "block";
+        });
+        document.getElementById("cash-out-button").addEventListener("click", function () {
+            document.getElementById("add-money-parent").style.display = "none";
+            document.getElementById("cash-out-parent").style.display = "block";
+        });
+
+    </script>
     <!-- Java Script -->
     <script src="JavaScript/home.js"></script>
 </body>
