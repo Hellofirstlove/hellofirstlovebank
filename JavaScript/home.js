@@ -143,6 +143,17 @@
         });
 
 
+        // Logout button
+        document.getElementById("logout-btn").addEventListener("click", function () {
+        // Clear local/session storage if you store login data
+        localStorage.clear();
+        sessionStorage.clear();
+
+        // Redirect to login page (change 'login.html' to your actual file)
+        window.location.href = "index.html";
+});
+
+
         //Toggle Section
         document.getElementById("add-money-button").addEventListener("click", function () {
             document.getElementById("cash-out-parent").style.display = "none";
