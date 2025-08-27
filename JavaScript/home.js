@@ -161,6 +161,7 @@
             document.getElementById("transfer-money-parent").style.display = "none";
             document.getElementById("bonus-money-parent").style.display = "none";
             document.getElementById("pay-money-parent").style.display = "none";
+            document.getElementById("transaction-money-parent").style.display = "none";
         });
         document.getElementById("cash-out-button").addEventListener("click", function () {
             document.getElementById("add-money-parent").style.display = "none";
@@ -168,6 +169,7 @@
             document.getElementById("transfer-money-parent").style.display = "none";
             document.getElementById("bonus-money-parent").style.display = "none";
             document.getElementById("pay-money-parent").style.display = "none";
+            document.getElementById("transaction-money-parent").style.display = "none";
         });
         document.getElementById("transfer-money-button").addEventListener("click", function () {
             document.getElementById("transfer-money-parent").style.display = "block";
@@ -175,6 +177,7 @@
             document.getElementById("add-money-parent").style.display = "none";
             document.getElementById("bonus-money-parent").style.display = "none";
             document.getElementById("pay-money-parent").style.display = "none";
+            document.getElementById("transaction-money-parent").style.display = "none";
         });
         document.getElementById("bonus-money-button").addEventListener("click", function () {
             document.getElementById("transfer-money-parent").style.display = "none";
@@ -182,6 +185,7 @@
             document.getElementById("add-money-parent").style.display = "none";
             document.getElementById("bonus-money-parent").style.display = "block";
             document.getElementById("pay-money-parent").style.display = "none";
+            document.getElementById("transaction-money-parent").style.display = "none";
         });
         document.getElementById("pay-money-button").addEventListener("click", function () {
             document.getElementById("transfer-money-parent").style.display = "none";
@@ -189,4 +193,5 @@
             document.getElementById("add-money-parent").style.display = "none";
             document.getElementById("bonus-money-parent").style.display = "none";
             document.getElementById("pay-money-parent").style.display = "block";
+            document.getElementById("transaction-money-parent").style.display = "none";
         });
