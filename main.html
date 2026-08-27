@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Hello First Love Bank</title>
     <!-- Tailwind and Daisy Ui -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -12,6 +12,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
         integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* ── Day / Night Mode ─────────────────────────────────── */
+        :root {
+            --bg-page:   #f4f5f7;
+            --bg-card:   #ffffff;
+            --text-main: #080808;
+            --text-muted:#08080880;
+            --border:    #d1d5db;
+            --input-bg:  #f4f5f7;
+        }
+        [data-theme="dark"] {
+            --bg-page:   #0f172a;
+            --bg-card:   #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted:#94a3b8;
+            --border:    #334155;
+            --input-bg:  #0f172a;
+        }
+        body          { background-color: var(--bg-page)  !important; transition: background-color .3s; }
+        .bg-white      { background-color: var(--bg-card)  !important; }
+        .bg-\[\#f4f5f7\] { background-color: var(--bg-page)  !important; }
+        h1, h2, p, label, li { color: var(--text-main) !important; }
+        .text-\[\#08080880\] { color: var(--text-muted) !important; }
+        .border-gray-300, .border-gray-400 { border-color: var(--border) !important; }
+        input, select  { background-color: var(--input-bg) !important; color: var(--text-main) !important; }
+        /* Smooth theme transition */
+        *, *::before, *::after { transition: background-color .3s, color .3s, border-color .3s; }
+    </style>
 </head>
 
 <body class="bg-[#f4f5f7] h-[100vh]">
@@ -26,6 +55,9 @@
             </div>
 
             <div>
+                <button id="theme-toggle-btn" class="btn text-[#08080880] mr-2">
+                    <i class="fa-solid fa-moon"></i> Night Mode
+                </button>
                 <button id="logout-btn" class="btn text-[#08080880]">
                 <i class="fa-solid fa-right-from-bracket rotate-180 text-gray-700"></i> Log Out
                 </button>

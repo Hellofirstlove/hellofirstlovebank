@@ -1,5 +1,28 @@
 // console.log("Hello FIRST LOVE");
 
+        // ─── Day / Night Mode ───────────────────────────────────────────
+        const themeToggleBtn = document.getElementById("theme-toggle-btn");
+        const root = document.documentElement;
+
+        // Apply saved preference on load
+        if (localStorage.getItem("theme") === "dark") {
+            root.setAttribute("data-theme", "dark");
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Day Mode';
+        }
+
+        themeToggleBtn.addEventListener("click", function () {
+            if (root.getAttribute("data-theme") === "dark") {
+                root.removeAttribute("data-theme");
+                localStorage.setItem("theme", "light");
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Night Mode';
+            } else {
+                root.setAttribute("data-theme", "dark");
+                localStorage.setItem("theme", "dark");
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Day Mode';
+            }
+        });
+        // ────────────────────────────────────────────────────────────────
+
         //Add Money
         document.getElementById("add-money-btn").addEventListener("click", function (e) {
             e.preventDefault();
@@ -41,6 +64,10 @@
             }
 
             const availablebalance = parseInt(document.getElementById("available-balance").innerText);
+            if (amount > availablebalance) {
+                alert("Insufficient balance! You cannot withdraw more than your available balance.");
+                return;
+            }
             const totalbalance = availablebalance - amount;
             document.getElementById("available-balance").innerText = totalbalance;
             addTransaction("Cash Out", amount, totalbalance);
@@ -64,6 +91,10 @@
             }
 
             const availablebalance = parseInt(document.getElementById("available-balance").innerText);
+            if (amount > availablebalance) {
+                alert("Insufficient balance! You cannot transfer more than your available balance.");
+                return;
+            }
             const totalbalance = availablebalance - amount;
             document.getElementById("available-balance").innerText = totalbalance;
             addTransaction("Transfer Money", amount, totalbalance);
@@ -104,9 +135,14 @@
                 return;
             }
             const availablebalance = parseInt(document.getElementById("available-balance").innerText);
+            if (amount > availablebalance) {
+                alert("Insufficient balance! You cannot pay more than your available balance.");
+                return;
+            }
             const totalbalance = availablebalance - amount;
             document.getElementById("available-balance").innerText = totalbalance;
             addTransaction("Bill Payment", amount, totalbalance);
+            alert("Bill Payment Successful! ✅");
         });
 
         // Transaction Part
